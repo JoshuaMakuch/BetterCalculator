@@ -84,8 +84,6 @@ Module BetterCalculator
             userInput = Console.ReadLine()
             If IsNumeric(userInput) Then
                 'userInput = Dbl(userInput) doesn't work due to option explicit...
-                'I could essentially create a new variable, but I didn't, so were here now
-                'Also, this determines if the user input a correct option
                 Console.WriteLine($"You entered {userInput}.")
                 If CDbl(userInput) = 1 Then
                     Console.WriteLine($"{num1} + {num2} = {num1 + num2}") 'Add
@@ -99,7 +97,7 @@ Module BetterCalculator
                 ElseIf CDbl(userInput) = 4 Then
                     Console.WriteLine($"{num1} / {num2} = {num1 / num2}") ' Divide
                     complete3 = True
-                ElseIf CDbl(userInput) > 4 Or CDbl(userInput) < 1 Then
+                ElseIf CDbl(userInput) <> CDbl(1 & 2 & 3 & 4) Then
                     Console.WriteLine($"{userInput} is an invalid option, please enter a correct option.")
                 End If
             ElseIf userInput.ToLower = "q" Then
