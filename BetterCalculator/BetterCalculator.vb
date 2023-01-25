@@ -10,6 +10,7 @@ Option Explicit On
 
 Imports System
 Imports System.Numerics
+Imports System.Threading
 
 Module BetterCalculator
     Sub Main(args As String())
@@ -31,8 +32,8 @@ Module BetterCalculator
     End Sub
 
     Function CalculatingTime() As Boolean
-        Dim num1 As Integer
-        Dim num2 As Integer
+        Dim num1 As Double 'This ensures that the limit for the number you input isnt going to crash the code
+        Dim num2 As Double
         Dim userInput1 As String
         Dim userInput2 As String
         Dim userInputOperator As String
@@ -46,8 +47,8 @@ Module BetterCalculator
             Console.WriteLine("Choose a first number")
             userInput1 = Console.ReadLine()
             If IsNumeric(userInput1) Then
-                Console.WriteLine($"You entered {CInt(userInput1)}.")
-                num1 = CInt(userInput1)
+                Console.WriteLine($"You entered {CDbl(userInput1)}.")
+                num1 = CDbl(userInput1)
                 complete1 = True
             ElseIf userInput1.ToLower = "q" Then
                 Return True
@@ -62,8 +63,8 @@ Module BetterCalculator
             Console.WriteLine("Choose a second number")
             userInput2 = Console.ReadLine()
             If IsNumeric(userInput2) Then
-                Console.WriteLine($"You entered {CInt(userInput2)}.")
-                num2 = CInt(userInput2)
+                Console.WriteLine($"You entered {CDbl(userInput2)}.")
+                num2 = CDbl(userInput2)
                 complete2 = True
             ElseIf userInput2.ToLower = "q" Then
                 Return True
@@ -84,10 +85,10 @@ Module BetterCalculator
             Console.WriteLine("4. Divide")
             userInputOperator = Console.ReadLine()
             If IsNumeric(userInputOperator) Then
-                Console.WriteLine($"You entered {userInputOperator}.")
                 'userInputOperator = CInt(userInputOperator) doesn't work due to option explicit...
                 'I could essentially create a new variable, but I didn't, so were here now
                 'Also, this determines if the user input a correct option
+                Console.WriteLine($"You entered {userInputOperator}.")
                 If CInt(userInputOperator) = 1 Then
                     Console.WriteLine($"{num1} + {num2} = {num1 + num2}") 'Add
                     complete3 = True
@@ -100,13 +101,13 @@ Module BetterCalculator
                 ElseIf CInt(userInputOperator) = 4 Then
                     Console.WriteLine($"{num1} / {num2} = {num1 / num2}") ' Divide
                     complete3 = True
-                ElseIf CInt(userInputOperator) > 4 Or CInt(userInputOperator) < 0 Then
-                    Console.WriteLine($"You entered {userInputOperator}, please enter a correct option.")
+                ElseIf CInt(userInputOperator) > 4 Or CInt(userInputOperator) < 1 Then
+                    Console.WriteLine($"{userInputOperator} is an invalid option, please enter a correct option.")
                 End If
             ElseIf userInputOperator.ToLower = "q" Then
                 Return True
             ElseIf IsNumeric(userInputOperator) = False Then
-                Console.WriteLine($"You entered {userInputOperator}, please enter a correct option.")
+                Console.WriteLine($"{userInputOperator} is an invalid option, please enter a correct option.")
             End If
 
         End While
