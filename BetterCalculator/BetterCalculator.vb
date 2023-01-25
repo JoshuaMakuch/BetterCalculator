@@ -6,10 +6,9 @@
 
 Option Strict On
 Option Explicit On
-'Option Compare : This causes the code to look at a letter as both its capital and lowercase for comparison
+'Option Compare Binary ': This causes the code to look at a letter as both its capital and lowercase for comparison
 
 Imports System
-Imports System.Net.Security
 Imports System.Numerics
 
 Module BetterCalculator
