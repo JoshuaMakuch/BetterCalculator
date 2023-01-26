@@ -10,6 +10,7 @@ Option Explicit On
 
 Imports System
 Imports System.Numerics
+Imports System.Security.AccessControl
 Imports System.Threading
 
 Module BetterCalculator
@@ -41,15 +42,17 @@ Module BetterCalculator
                 Console.WriteLine("")
                 Console.WriteLine("Choose a first number")
                 userInput = Console.ReadLine()
-                If IsNumeric(userInput) Then
-                    Console.WriteLine($"You entered {CDbl(userInput)}.")
+                Try
                     num1 = CDbl(userInput)
+                    Console.WriteLine($"You entered {num1}.")
                     complete = True
-                ElseIf userInput.ToLower = "q" Then
-                    Exit Sub
-                ElseIf IsNumeric(userInput) = False Then
-                    Console.WriteLine($"You entered {userInput}, please enter a number.")
-                End If
+                Catch ex As Exception
+                    If userInput.ToLower = "q" Then
+                        Exit Sub
+                    ElseIf IsNumeric(userInput) = False Then
+                        Console.WriteLine($"You entered {userInput}, please enter a number.")
+                    End If
+                End Try
             End While
             complete = False
 
@@ -58,15 +61,17 @@ Module BetterCalculator
                 Console.WriteLine("")
                 Console.WriteLine("Choose a second number")
                 userInput = Console.ReadLine()
-                If IsNumeric(userInput) Then
-                    Console.WriteLine($"You entered {CDbl(userInput)}.")
+                Try
                     num2 = CDbl(userInput)
+                    Console.WriteLine($"You entered {num1}.")
                     complete = True
-                ElseIf userInput.ToLower = "q" Then
-                    Exit Sub
-                ElseIf IsNumeric(userInput) = False Then
-                    Console.WriteLine($"You entered {userInput}, please enter a number.")
-                End If
+                Catch ex As Exception
+                    If userInput.ToLower = "q" Then
+                        Exit Sub
+                    ElseIf IsNumeric(userInput) = False Then
+                        Console.WriteLine($"You entered {userInput}, please enter a number.")
+                    End If
+                End Try
             End While
             complete = False
 
@@ -81,10 +86,11 @@ Module BetterCalculator
                 Console.WriteLine("3. Multiply")
                 Console.WriteLine("4. Divide")
                 userInput = Console.ReadLine()
-                If IsNumeric(userInput) Then
+
+                Try
 
                     'userInput = Dbl(userInput) doesn't work due to option explicit...
-                    Console.WriteLine($"You entered {userInput}.")
+                    Console.WriteLine($"You entered {CDbl(userInput)}.")
                     If CDbl(userInput) = 1 Then
                         Console.WriteLine($"{num1} + {num2} = {num1 + num2}") 'Add
                         complete = True
@@ -101,11 +107,15 @@ Module BetterCalculator
                         Console.WriteLine($"{userInput} is an invalid option, please enter a correct option.")
                     End If
 
-                ElseIf userInput.ToLower = "q" Then
-                    Exit Sub
-                ElseIf IsNumeric(userInput) = False Then
-                    Console.WriteLine($"{userInput} is an invalid option, please enter a correct option.")
-                End If
+                Catch ex As Exception
+
+                    If userInput.ToLower = "q" Then
+                        Exit Sub
+                    ElseIf IsNumeric(userInput) = False Then
+                        Console.WriteLine($"{userInput} is an invalid option, please enter a correct option.")
+                    End If
+
+                End Try
 
             End While
             complete = False
