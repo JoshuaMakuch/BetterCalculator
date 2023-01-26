@@ -10,8 +10,6 @@ Option Explicit On
 
 Imports System
 Imports System.Numerics
-Imports System.Security.AccessControl
-Imports System.Threading
 
 Module BetterCalculator
     Sub Main(args As String())
