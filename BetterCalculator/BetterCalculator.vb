@@ -28,8 +28,8 @@ Module BetterCalculator
     Sub CalculatingTime()
 
         'This ensures that the limit for the number you input isnt going to crash the code
-        Dim num1 As Double
-        Dim num2 As Double
+        Dim number1 As Double
+        Dim number2 As Double
         Dim userInput As String
         Dim complete As Boolean = False
 
@@ -41,8 +41,8 @@ Module BetterCalculator
                 Console.WriteLine("Choose a first number")
                 userInput = Console.ReadLine()
                 Try
-                    num1 = CDbl(userInput)
-                    Console.WriteLine($"You entered {num1}.")
+                    number1 = CDbl(userInput)
+                    Console.WriteLine($"You entered {number1}.")
                     complete = True
                 Catch ex As Exception
                     If userInput.ToLower = "q" Then
@@ -60,8 +60,8 @@ Module BetterCalculator
                 Console.WriteLine("Choose a second number")
                 userInput = Console.ReadLine()
                 Try
-                    num2 = CDbl(userInput)
-                    Console.WriteLine($"You entered {num1}.")
+                    number2 = CDbl(userInput)
+                    Console.WriteLine($"You entered {number2}.")
                     complete = True
                 Catch ex As Exception
                     If userInput.ToLower = "q" Then
@@ -90,16 +90,16 @@ Module BetterCalculator
                     'userInput = Dbl(userInput) doesn't work due to option explicit...
                     Console.WriteLine($"You entered {CDbl(userInput)}.")
                     If CDbl(userInput) = 1 Then
-                        Console.WriteLine($"{num1} + {num2} = {num1 + num2}") 'Add
+                        Console.WriteLine($"{number1} + {number2} = {number1 + number2}") 'Add
                         complete = True
                     ElseIf CDbl(userInput) = 2 Then
-                        Console.WriteLine($"{num1} - {num2} = {num1 - num2}") 'Subtract
+                        Console.WriteLine($"{number1} - {number2} = {number1 - number2}") 'Subtract
                         complete = True
                     ElseIf CDbl(userInput) = 3 Then
-                        Console.WriteLine($"{num1} * {num2} = {num1 * num2}") 'Multiply
+                        Console.WriteLine($"{number1} * {number2} = {number1 * number2}") 'Multiply
                         complete = True
                     ElseIf CDbl(userInput) = 4 Then
-                        Console.WriteLine($"{num1} / {num2} = {num1 / num2}") 'Divide
+                        Console.WriteLine($"{number1} / {number2} = {number1 / number2}") 'Divide
                         complete = True
                     ElseIf CDbl(userInput) <> CDbl(1 & 2 & 3 & 4) Then
                         Console.WriteLine($"{userInput} is an invalid option, please enter a correct option.")
