@@ -1,6 +1,6 @@
 'Joshua Makuch
 'RCET0265
-'Fall 2023
+'Winter 2023
 'Better Calculator
 'https://github.com/JoshuaMakuch/BetterCalculator.git
 
